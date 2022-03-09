@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "AzureDatafactory001-ADF"
+		},
+		"LS_BlobConnection_connectionString": {
+			"value": ""
+		},
+		"LS_DatalakeConnection_accountKey": {
+			"value": ""
+		},
+		"LS_BlobConnect_connectionString": {
+			"value": ""
+		},
+		"LS_AdlsConnection_accountKey": {
+			"value": ""
+		},
+		"LS_SQLConnection_connectionString": {
+			"value": ""
+		},
+		"TR_EventTrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/0b09d9a2-10b0-4bdb-966c-fa3ebfa3ba0a/resourceGroups/TestADF-RG/providers/Microsoft.Storage/storageAccounts/adflnew001storageaccount"
+		},
+		"LS_DatalakeConnection_properties_typeProperties_url": {
+			"value": "https://adflnew001adlsgen2.dfs.core.windows.net"
+		},
+		"LS_AdlsConnection_properties_typeProperties_url": {
+			"value": "https://adflnew001adlsgen2.dfs.core.windows.net"
+		},
+		"LS_HTTPConnection_properties_typeProperties_url": {
+			"value": "@{linkedService().BaseURL}"
+		}
+	}
+}

@@ -1,0 +1,125 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "AzureDatafactory001-ADF"
+		},
+		"LS_BlobConnection_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_BlobConnection'"
+		},
+		"LS_DatalakeConnection_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_DatalakeConnection'"
+		},
+		"LS_BlobConnect_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_BlobConnect'"
+		},
+		"LS_AdlsConnection_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_AdlsConnection'"
+		},
+		"LS_SQLConnection_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_SQLConnection'"
+		},
+		"TR_EventTrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/0b09d9a2-10b0-4bdb-966c-fa3ebfa3ba0a/resourceGroups/TestADF-RG/providers/Microsoft.Storage/storageAccounts/adflnew001storageaccount"
+		},
+		"LS_DatalakeConnection_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adflnew001adlsgen2.dfs.core.windows.net"
+		},
+		"LS_AdlsConnection_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adflnew001adlsgen2.dfs.core.windows.net"
+		},
+		"LS_HTTPConnection_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "@{linkedService().BaseURL}"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "AzureDatafactory001-ADF_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_BlobConnection_connectionString": {
+						"value": "[parameters('LS_BlobConnection_connectionString')]"
+					},
+					"LS_DatalakeConnection_accountKey": {
+						"value": "[parameters('LS_DatalakeConnection_accountKey')]"
+					},
+					"LS_BlobConnect_connectionString": {
+						"value": "[parameters('LS_BlobConnect_connectionString')]"
+					},
+					"LS_AdlsConnection_accountKey": {
+						"value": "[parameters('LS_AdlsConnection_accountKey')]"
+					},
+					"LS_SQLConnection_connectionString": {
+						"value": "[parameters('LS_SQLConnection_connectionString')]"
+					},
+					"LS_DatalakeConnection_properties_typeProperties_url": {
+						"value": "[parameters('LS_DatalakeConnection_properties_typeProperties_url')]"
+					},
+					"LS_AdlsConnection_properties_typeProperties_url": {
+						"value": "[parameters('LS_AdlsConnection_properties_typeProperties_url')]"
+					},
+					"LS_HTTPConnection_properties_typeProperties_url": {
+						"value": "[parameters('LS_HTTPConnection_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "AzureDatafactory001-ADF_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"TR_EventTrigger_properties_typeProperties_scope": {
+						"value": "[parameters('TR_EventTrigger_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'AzureDatafactory001-ADF_ArmTemplate_0')]"
+			]
+		}
+	]
+}
