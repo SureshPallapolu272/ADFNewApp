@@ -451,6 +451,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
+						"fileName": "Exists.csv",
 						"container": "input"
 					},
 					"columnDelimiter": ",",
