@@ -7,6 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "AzureDatafactory001-ADF"
 		},
+		"LS_AdlsConnection_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_AdlsConnection'"
+		},
+		"LS_BlobConnect_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_BlobConnect'"
+		},
 		"LS_BlobConnection_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_BlobConnection'"
@@ -15,33 +23,25 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_DatalakeConnection'"
 		},
-		"LS_BlobConnect_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_BlobConnect'"
-		},
-		"LS_AdlsConnection_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_AdlsConnection'"
-		},
 		"LS_SQLConnection_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_SQLConnection'"
 		},
-		"TR_EventTrigger_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/0b09d9a2-10b0-4bdb-966c-fa3ebfa3ba0a/resourceGroups/TestADF-RG/providers/Microsoft.Storage/storageAccounts/adflnew001storageaccount"
-		},
-		"LS_DatalakeConnection_properties_typeProperties_url": {
+		"LS_AdlsConnection_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adflnew001adlsgen2.dfs.core.windows.net"
 		},
-		"LS_AdlsConnection_properties_typeProperties_url": {
+		"LS_DatalakeConnection_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adflnew001adlsgen2.dfs.core.windows.net"
 		},
 		"LS_HTTPConnection_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "@{linkedService().BaseURL}"
+		},
+		"TR_EventTrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/0b09d9a2-10b0-4bdb-966c-fa3ebfa3ba0a/resourceGroups/TestADF-RG/providers/Microsoft.Storage/storageAccounts/adflnew001storageaccount"
 		},
 		"containerUri": {
 			"type": "string",
@@ -70,26 +70,26 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"LS_AdlsConnection_accountKey": {
+						"value": "[parameters('LS_AdlsConnection_accountKey')]"
+					},
+					"LS_BlobConnect_connectionString": {
+						"value": "[parameters('LS_BlobConnect_connectionString')]"
+					},
 					"LS_BlobConnection_connectionString": {
 						"value": "[parameters('LS_BlobConnection_connectionString')]"
 					},
 					"LS_DatalakeConnection_accountKey": {
 						"value": "[parameters('LS_DatalakeConnection_accountKey')]"
 					},
-					"LS_BlobConnect_connectionString": {
-						"value": "[parameters('LS_BlobConnect_connectionString')]"
-					},
-					"LS_AdlsConnection_accountKey": {
-						"value": "[parameters('LS_AdlsConnection_accountKey')]"
-					},
 					"LS_SQLConnection_connectionString": {
 						"value": "[parameters('LS_SQLConnection_connectionString')]"
 					},
-					"LS_DatalakeConnection_properties_typeProperties_url": {
-						"value": "[parameters('LS_DatalakeConnection_properties_typeProperties_url')]"
-					},
 					"LS_AdlsConnection_properties_typeProperties_url": {
 						"value": "[parameters('LS_AdlsConnection_properties_typeProperties_url')]"
+					},
+					"LS_DatalakeConnection_properties_typeProperties_url": {
+						"value": "[parameters('LS_DatalakeConnection_properties_typeProperties_url')]"
 					},
 					"LS_HTTPConnection_properties_typeProperties_url": {
 						"value": "[parameters('LS_HTTPConnection_properties_typeProperties_url')]"
