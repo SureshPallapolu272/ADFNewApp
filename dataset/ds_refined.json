@@ -1,0 +1,19 @@
+{
+	"name": "ds_refined",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_DatalakeConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "outputdata",
+				"fileSystem": "refined"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

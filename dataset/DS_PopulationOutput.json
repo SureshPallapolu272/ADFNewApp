@@ -1,0 +1,24 @@
+{
+	"name": "DS_PopulationOutput",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AdlsConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Archive",
+				"fileSystem": "output"
+			},
+			"columnDelimiter": "\t",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
